@@ -34,7 +34,8 @@
     padding-left: 5px;
 }
 
-.implementation-coutries-list li:hover {
+.implementation-coutries-list li:hover,
+.implementation-coutries-list li.active {
     background-color: #efefef;
 }
 
