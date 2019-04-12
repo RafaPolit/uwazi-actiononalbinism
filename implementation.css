@@ -1,0 +1,23 @@
+.implementation h2 {
+  margin-top: 0px;
+}
+
+.implementation-columns {
+  display: flex;
+}
+
+.implementation-coutries-list {
+  flex: 1;
+}
+
+.implementation-map {
+  flex: 2;
+}
+
+.implementation-coutries-list span.value {
+  display: inline-block;
+  background-color: rgba(160,160,160,0.3);
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  border-radius: 10%;
+}
