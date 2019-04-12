@@ -22,3 +22,22 @@
   padding-left: 0.3em;
   border-radius: 10%;
 }
+
+.implementation-coutries-list ul {
+    list-style: none;
+    padding-left: 0px;
+    padding-right: 30px;
+}
+
+.implementation-coutries-list li {
+    display: flex;
+    padding-left: 5px;
+}
+
+.implementation-coutries-list li:hover {
+    background-color: #efefef;
+}
+
+.implementation-coutries-list li a {
+    flex: 1;
+}
