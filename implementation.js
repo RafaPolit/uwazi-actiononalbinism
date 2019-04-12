@@ -37,8 +37,8 @@ request.onload = function() {
 
           mapCountry.style.fill = 'rgb(' + color.join(',') + ')';
           mapCountry.dataset.value = implementationValue;
-          mapCountry.addEventListener('mouseover', processLabel);
-          mapCountry.addEventListener('mouseout', hideLabel);
+          mapCountry.addEventListener('mouseover', function(e) { hoverMapCountry(e, country); });
+          mapCountry.addEventListener('mouseout', function() { hoverOutMapCountry(country); });
         }
       });
     });
@@ -56,6 +56,16 @@ var getValueColor = function(percent) {
 };
 
 var count = 0;
+
+var hoverMapCountry = function(e, countryLi) {
+  processLabel(e);
+  countryLi.className = 'active';
+};
+
+var hoverOutMapCountry = function(countryLi) {
+  hideLabel();
+  countryLi.className = '';
+};
 
 var highlightCountry = function(mapCountry) {
   mapCountry.className.baseVal = 'active';
