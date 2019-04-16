@@ -49,7 +49,7 @@
         fill-rule: evenodd;
         stroke: #000;
         fill: #ccc;
-        opacity: 0.5;
+        opacity: 0.66;
       }
 
       path:hover,
@@ -60,14 +60,15 @@
       .svg-text-country,
       .svg-text-value {
         font-family: sans-serif;
-        font-size: 30px;
-        stroke: none;
-        fill: #666;
+        font-size: 32px;
+        stroke: #333;
+        fill: #333;
       }
 
       .svg-text-value {
         font-weight: bold;
-        font-size: 26px;
+        font-size: 30px;
+        stroke: #000;
         fill: #000;
       }
     </style>
@@ -454,7 +455,7 @@
      style="" />
   <g id="map-data-label" style="display: none">
     <text id="svg-text-country" dominant-baseline="middle" x="250" y="540" text-anchor="middle" class="svg-text-country"></text>
-    <circle id="svg-text-circle" style="fill:#0f0;stroke:#010101;stroke-width:1.6871;stroke-miterlimit:10;" cx="250" cy="610" r="40"></circle>
-    <text id="svg-text-value" x="250" y="610" dominant-baseline="middle"  text-anchor="middle" class="svg-text-value">-</text>
+    <circle id="svg-text-circle" style="fill:#0f0;stroke:none;" cx="250" cy="630" r="60"></circle>
+    <text id="svg-text-value" x="250" y="630" dominant-baseline="middle"  text-anchor="middle" class="svg-text-value">-</text>
   </g>
 </svg>
