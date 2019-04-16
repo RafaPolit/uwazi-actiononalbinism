@@ -87,7 +87,7 @@ var changeType = function(assignEvents) {
         var implementationValue = reportData[country.dataset.mongoId][property];
         var color = getValueColor(implementationValue);
         country.querySelector('span.value').innerHTML = implementationValue + '%';
-        country.querySelector('span.value').style.backgroundColor = 'rgba(' + color.join(',') + ',0.5)';
+        country.querySelector('span.value').style.backgroundColor = 'rgba(' + color.join(',') + ',1)';
 
         var mapCountry = map.querySelector('#' + country.dataset.country);
 
@@ -105,13 +105,16 @@ var changeType = function(assignEvents) {
   });
 }
 
-var maxLuminosity = 240;
-var lumMultiplier = maxLuminosity / 50;
+var maxLuminosity = 230;
+var desaturate = 127;
+
+var lumMultiplier = (maxLuminosity - desaturate) / 50;
 
 var getValueColor = function(percent) {
-  var R = percent <= 50 ? maxLuminosity : Math.round(maxLuminosity - ((percent - 50)*lumMultiplier));
-  var G = percent >= 50 ? maxLuminosity : Math.round(percent*lumMultiplier);
-  var B = 0;
+  var reversedPercent = 100 - percent
+  var R = percent <= 50 ? maxLuminosity : Math.round(reversedPercent*lumMultiplier + desaturate);
+  var G = percent >= 50 ? maxLuminosity : Math.round(percent*lumMultiplier + desaturate);
+  var B = desaturate;
   return [R, G, B];
 };
 
