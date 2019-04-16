@@ -7,6 +7,8 @@ var $ = document.querySelector.bind(document);
 
 var reportData = {};
 var map;
+var selector;
+var regions;
 
 var request = new XMLHttpRequest();
 
@@ -19,38 +21,96 @@ request.onload = function() {
       reportData[row.sharedId] = row.metadata;
     });
 
-    var regions = document.querySelectorAll('.implementation-coutries-list ul');
+    regions = document.querySelectorAll('.implementation-coutries-list ul');
 
-    regions.forEach(function(region) {
-      var regionCountries = region.querySelectorAll('li');
-      regionCountries.forEach(function(country) {
-        if (!country.className.includes('hidden')) {
-          // var implementationValue = reportData[country.dataset.mongoId].a__prevention;
-          var implementationValue = reportData[country.dataset.mongoId].d_2_6_national_assessment_of_locally_produced_sunscreen;
-          var color = getValueColor(implementationValue);
-          country.querySelector('span.value').innerHTML = implementationValue + '%';
-          country.querySelector('span.value').style.backgroundColor = 'rgba(' + color.join(',') + ',0.3)';
-
-          var mapCountry = map.querySelector('#' + country.dataset.country);
-          country.addEventListener('mouseover', function() { highlightCountry(mapCountry); });
-          country.addEventListener('mouseout', function() { unHighlightCountry(mapCountry); });
-
-          mapCountry.style.fill = 'rgb(' + color.join(',') + ')';
-          mapCountry.dataset.value = implementationValue;
-          mapCountry.addEventListener('mouseover', function(e) { hoverMapCountry(e, country); });
-          mapCountry.addEventListener('mouseout', function() { hoverOutMapCountry(country); });
-        }
-      });
-    });
+    assignButtonEvents();
+    changeType(true);
   } else {
     console.log('Error loading data!');
   }
 };
 
+var assignButtonEvents = function() {
+  $('.options-first-level').querySelectorAll('li').forEach(function(firstLevelOption) {
+    var property = firstLevelOption.querySelector('button').dataset.property;
+
+    $('#options-for-' + property).querySelectorAll('li').forEach(function(secondLevelOption) {
+      secondLevelOption.querySelector('button').addEventListener('click', function() {
+        clearSecondLevelActive(property);
+        secondLevelOption.className = "active";
+        changeType();
+      });
+    });
+
+    firstLevelOption.querySelector('button').addEventListener('click', function(e) {
+      clearFirstLevelActive();
+      firstLevelOption.className = "active";
+
+      hideAllSecondLevel();
+      showSecondLevel(e.srcElement.dataset.property);
+      changeType();
+    });
+  });
+
+};
+
+var clearFirstLevelActive = function() {
+  $('.options-first-level').querySelectorAll('li').forEach(function(firstLevelOption) {
+    firstLevelOption.className = "";
+  });
+};
+
+var clearSecondLevelActive = function(property) {
+  $('#options-for-' + property).querySelectorAll('li').forEach(function(firstLevelOption) {
+    firstLevelOption.className = "";
+  });
+};
+
+var hideAllSecondLevel = function() {
+  document.querySelectorAll('.options-second-level').forEach(function(secondLevelBlock) {
+    secondLevelBlock.className = "options-second-level hidden";
+  });
+};
+
+var showSecondLevel = function(property) {
+  $('#options-for-' + property).className = "options-second-level";
+};
+
+var changeType = function(assignEvents) {
+  var property = $('.options-second-level:not(.hidden) li.active button').dataset.property;
+
+  regions.forEach(function(region) {
+    var regionCountries = region.querySelectorAll('li');
+    regionCountries.forEach(function(country) {
+      if (!country.className.includes('hidden')) {
+
+        var implementationValue = reportData[country.dataset.mongoId][property];
+        var color = getValueColor(implementationValue);
+        country.querySelector('span.value').innerHTML = implementationValue + '%';
+        country.querySelector('span.value').style.backgroundColor = 'rgba(' + color.join(',') + ',0.5)';
+
+        var mapCountry = map.querySelector('#' + country.dataset.country);
+
+        mapCountry.style.fill = 'rgb(' + color.join(',') + ')';
+        mapCountry.dataset.value = implementationValue;
+
+        if(assignEvents) {
+          country.addEventListener('mouseover', function() { highlightCountry(mapCountry); });
+          country.addEventListener('mouseout', function() { unHighlightCountry(mapCountry); });
+          mapCountry.addEventListener('mouseover', function(e) { hoverMapCountry(e, country); });
+          mapCountry.addEventListener('mouseout', function() { hoverOutMapCountry(country); });
+        }
+      }
+    });
+  });
+}
+
+var maxLuminosity = 240;
+var lumMultiplier = maxLuminosity / 50;
 
 var getValueColor = function(percent) {
-  var R = percent <= 50 ? 255 : Math.round(255 - ((percent - 50)*5.1));
-  var G = percent >= 50 ? 255 : Math.round(percent*5.1);
+  var R = percent <= 50 ? maxLuminosity : Math.round(maxLuminosity - ((percent - 50)*lumMultiplier));
+  var G = percent >= 50 ? maxLuminosity : Math.round(percent*lumMultiplier);
   var B = 0;
   return [R, G, B];
 };
