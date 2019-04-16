@@ -7,6 +7,18 @@
   display: flex;
 }
 
+@media(max-width: 768px) {
+  .implementation-columns {
+    flex-direction: column-reverse;
+  }
+
+  .implementation-action-buttons .hr {
+    border-bottom: 1px solid;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}
+
 .implementation-coutries-list {
   flex: 1;
 }
@@ -42,3 +54,60 @@
 .implementation-coutries-list li a {
     flex: 1;
 }
+
+.implementation-action-buttons {
+  margin-bottom: 30px;
+}
+
+.implementation-action-buttons ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.implementation-action-buttons li {
+    flex: 1;
+}
+
+.implementation-action-buttons li {
+    margin-right: 5px;
+}
+
+.implementation-action-buttons button {
+    width: 100%;
+    height: 100%;
+    border: 0px solid #999;
+    color: #333;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.implementation-action-buttons ul.options-first-level button {
+    background-color: #e6e6e6;
+}
+
+.implementation-action-buttons ul.options-first-level button:hover {
+    background-color: #f1f1f1;
+}
+
+.implementation-action-buttons ul.options-first-level li.active button {
+    background-color: #3999d2;
+    color: white;
+}
+
+.implementation-action-buttons ul.options-second-level button {
+    background-color: #dfdfdf;
+}
+
+.implementation-action-buttons ul.options-second-level button:hover {
+    background-color: #f1f1f1;
+}
+
+.implementation-action-buttons ul.options-second-level li.active button {
+    background-color: #06a00d;
+    color: white;
+}
+
