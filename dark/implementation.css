@@ -1,0 +1,131 @@
+/* This should be added to the current CSS values, not replaced! */
+.implementation h2 {
+  margin-top: 0px;
+}
+
+@media(max-width: 768px) {
+  .implementation h2 {
+    font-size: 24px;
+  }
+
+  .implementation h3 {
+    font-size: 20px;
+  }
+}
+
+.implementation-columns {
+  display: flex;
+}
+
+@media(max-width: 768px) {
+  .implementation-columns {
+    flex-direction: column-reverse;
+  }
+
+  .implementation-action-buttons .hr {
+    border-bottom: 1px solid;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}
+
+.implementation-coutries-list {
+  flex: 1;
+}
+
+.implementation-map {
+  flex: 2.5;
+  margin-bottom: 30px;
+}
+
+.implementation-coutries-list span.value {
+  display: inline-block;
+  background-color: rgba(160,160,160,0.3);
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  border-radius: 10%;
+  color: #000;
+}
+
+.implementation-coutries-list ul {
+    list-style: none;
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+.implementation-coutries-list li {
+    display: flex;
+    padding-left: 5px;
+}
+
+.implementation-coutries-list li:hover,
+.implementation-coutries-list li.active {
+    background-color: #efefef;
+}
+
+.implementation-coutries-list li a {
+    flex: 1;
+}
+
+.implementation-action-buttons {
+  margin-bottom: 50px;
+}
+
+@media(max-width: 768px) {
+  .implementation-action-buttons {
+    margin-bottom: 30px;
+  }
+}
+
+.implementation-action-buttons ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.implementation-action-buttons li {
+    flex: 1;
+}
+
+.implementation-action-buttons li {
+    margin-right: 5px;
+}
+
+.implementation-action-buttons button {
+    width: 100%;
+    height: 100%;
+    min-height: 64px;
+    border: 0px solid #999;
+    color: #333;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+.implementation-action-buttons ul.options-first-level button {
+    background-color: #e6e6e6;
+}
+
+.implementation-action-buttons ul.options-first-level button:hover {
+    background-color: #f1f1f1;
+}
+
+.implementation-action-buttons ul.options-first-level li.active button {
+    background-color: #3999d2;
+    color: white;
+}
+
+.implementation-action-buttons ul.options-second-level button {
+    background-color: #dfdfdf;
+}
+
+.implementation-action-buttons ul.options-second-level button:hover {
+    background-color: #f1f1f1;
+}
+
+.implementation-action-buttons ul.options-second-level li.active button {
+    background-color: #06a00d;
+    color: white;
+}
