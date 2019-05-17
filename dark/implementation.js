@@ -106,11 +106,14 @@ var changeType = function(assignEvents) {
 }
 
 var maxLuminosity = 230;
-var desaturate = 127;
+var desaturate = 60;
+var flattenCurveFactor = 8;
 
 var lumMultiplier = (maxLuminosity - desaturate) / 50;
+var logMultiplier = 100/Math.log(100/flattenCurveFactor + 1);
 
-var getValueColor = function(percent) {
+var getValueColor = function(rawPercent) {
+  var percent = Math.log(rawPercent/flattenCurveFactor + 1) * logMultiplier;
   var reversedPercent = 100 - percent
   var R = percent <= 50 ? maxLuminosity : Math.round(reversedPercent*lumMultiplier + desaturate);
   var G = percent >= 50 ? maxLuminosity : Math.round(percent*lumMultiplier + desaturate);
