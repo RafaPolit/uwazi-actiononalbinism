@@ -99,6 +99,7 @@ var changeType = function(assignEvents) {
           country.addEventListener('mouseout', function() { unHighlightCountry(mapCountry); });
           mapCountry.addEventListener('mouseover', function(e) { hoverMapCountry(e, country); });
           mapCountry.addEventListener('mouseout', function() { hoverOutMapCountry(country); });
+          mapCountry.addEventListener('click', function() { navigateTo(country); });
         }
       }
     });
@@ -121,7 +122,9 @@ var getValueColor = function(rawPercent) {
   return [R, G, B];
 };
 
-var count = 0;
+var navigateTo = function(countryLi) {
+  countryLi.querySelector('a').click();
+}
 
 var hoverMapCountry = function(e, countryLi) {
   processLabel(e);
