@@ -106,62 +106,62 @@
 
 .implementation-action-buttons ul.options-first-level button.btn-1,
 .implementation-action-buttons ul.options-second-level button.sct-1 {
-    background-color: rgba(102,145,231,0.7);
+    background-color: rgba(78,129,229,0.7);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-1:hover,
 .implementation-action-buttons ul.options-second-level button.sct-1:hover {
-    background-color: rgba(102,145,231,0.9);
+    background-color: rgba(78,129,229,0.9);
 }
 
 .implementation-action-buttons ul.options-first-level li.active button.btn-1,
 .implementation-action-buttons ul.options-second-level li.active button.sct-1 {
-    background-color: rgba(102,145,231,1);
+    background-color: rgba(78,129,229,1);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-2,
 .implementation-action-buttons ul.options-second-level button.sct-2 {
-    background-color: rgba(224,81,200,0.7);
+    background-color: rgba(100,201,44,0.7);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-2:hover,
 .implementation-action-buttons ul.options-second-level button.sct-2:hover {
-    background-color: rgba(224,81,200,0.9);
+    background-color: rgba(100,201,44,0.9);
 }
 
 .implementation-action-buttons ul.options-first-level li.active button.btn-2,
 .implementation-action-buttons ul.options-second-level li.active button.sct-2 {
-    background-color: rgba(224,81,200,1);
+    background-color: rgba(100,201,44,1);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-3,
 .implementation-action-buttons ul.options-second-level button.sct-3 {
-    background-color: rgba(57,187,79,0.7);
+    background-color: rgba(235,156,18,0.7);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-3:hover,
 .implementation-action-buttons ul.options-second-level button.sct-3:hover {
-    background-color: rgba(57,187,79,0.9);
+    background-color: rgba(235,156,18,0.9);
 }
 
 .implementation-action-buttons ul.options-first-level li.active button.btn-3,
 .implementation-action-buttons ul.options-second-level li.active button.sct-3 {
-    background-color: rgba(57,187,79,1);
+    background-color: rgba(235,156,18,1);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-4,
 .implementation-action-buttons ul.options-second-level button.sct-4 {
-    background-color: rgba(214,165,64,0.7);
+    background-color: rgba(204,86,238,0.7);
 }
 
 .implementation-action-buttons ul.options-first-level button.btn-4:hover,
 .implementation-action-buttons ul.options-second-level button.sct-4:hover {
-    background-color: rgba(214,165,64,0.9);
+    background-color: rgba(204,86,238,0.9);
 }
 
 .implementation-action-buttons ul.options-first-level li.active button.btn-4,
 .implementation-action-buttons ul.options-second-level li.active button.sct-4 {
-    background-color: rgba(214,165,64,1);
+    background-color: rgba(204,86,238,1);
 }
 
 .implementation-action-buttons ul.options-first-level li.active button,
