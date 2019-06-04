@@ -13,6 +13,24 @@
   }
 }
 
+.implementation .toggle-source ul.nav.nav-tabs {
+  display: block;
+  text-align: left;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.toggle-source li {
+  width: auto;
+  max-width: none;
+}
+
+.toggle-source .nav a {
+  line-height: 45px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .implementation-columns {
   display: flex;
 }
