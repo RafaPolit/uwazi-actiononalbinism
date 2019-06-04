@@ -48,7 +48,7 @@
       path {
         fill-rule: evenodd;
         stroke: rgba(0,0,0,0.5);
-        fill: rgba(60,60,60,0.9);
+        fill: rgba(200,200,200,0.9);
         opacity: 0.8;
       }
 
