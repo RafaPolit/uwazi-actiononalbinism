@@ -31,27 +31,61 @@ request.onload = function() {
 };
 
 var assignButtonEvents = function() {
+  var tabs = $('.toggle-source').querySelectorAll('li');
+  var measuresTab = tabs[0];
+  var targetsTab = tabs[1];
+
+  var measuresTabButton = measuresTab.querySelector('a');
+  var targetsTabButton = targetsTab.querySelector('a');
+
+  var selectedSecondLevels = ['a__prevention', 'targets'];
+
+  measuresTabButton.addEventListener('click', function() { activateTab(tabs, measuresTab, selectedSecondLevels, 0); });
+  targetsTabButton.addEventListener('click', function() { activateTab(tabs, targetsTab, selectedSecondLevels, 1); });
+
   $('.options-first-level').querySelectorAll('li').forEach(function(firstLevelOption) {
     var property = firstLevelOption.querySelector('button').dataset.property;
 
-    $('#options-for-' + property).querySelectorAll('li').forEach(function(secondLevelOption) {
-      secondLevelOption.querySelector('button').addEventListener('click', function() {
-        clearSecondLevelActive(property);
-        secondLevelOption.className = "active";
-        changeType();
-      });
-    });
+    $('#options-for-' + property).querySelectorAll('li').forEach((secondLevelOption) => secondLevelOnClick(secondLevelOption, property));
 
     firstLevelOption.querySelector('button').addEventListener('click', function(e) {
       clearFirstLevelActive();
       firstLevelOption.className = "active";
 
       hideAllSecondLevel();
-      showSecondLevel(e.srcElement.dataset.property);
+      selectedSecondLevels[0] = e.srcElement.dataset.property;
+      showSecondLevel(selectedSecondLevels[0]);
       changeType();
     });
   });
 
+  $('#options-for-targets').querySelectorAll('li').forEach((secondLevelOption) => secondLevelOnClick(secondLevelOption, 'targets'));
+};
+
+var activateTab = function(tabs, tab, selectedSecondLevels, targetPosition) {
+  var targetSection = ['measures', 'targets'][targetPosition];
+
+  tabs.forEach(function(tab) { tab.className = ''; });
+  $('.implementation.scripted-section').querySelectorAll('.implementation-action-buttons').forEach(function(section) {
+    section.className = section.className.includes(' hidden') ? section.className : section.className + ' hidden';
+  });
+
+  hideAllSecondLevel();
+  showSecondLevel(selectedSecondLevels[targetPosition]);
+
+  tab.className = 'active';
+
+  var section = document.getElementById(targetSection);
+  section.className = section.className.replace(' hidden', '');
+  changeType();
+}
+
+var secondLevelOnClick = function(secondLevelOption, property) {
+  secondLevelOption.querySelector('button').addEventListener('click', function() {
+    clearSecondLevelActive(property);
+    secondLevelOption.className = "active";
+    changeType();
+  });
 };
 
 var clearFirstLevelActive = function() {
