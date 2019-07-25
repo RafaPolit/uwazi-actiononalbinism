@@ -1,5 +1,14 @@
 /* This should be added to the current CSS values, not replaced! */
 
+.sdg-group span.expand-contract {
+    display: inline-block;
+    background-color: #ffd27f;
+    padding: 3px;
+    text-align: center;
+    width: 15px;
+    border-radius: 3px;
+}
+
 .sdg-group-data {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -9,3 +18,4 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
